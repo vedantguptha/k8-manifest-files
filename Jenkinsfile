@@ -4,17 +4,21 @@ pipeline {
               APP_NAME = "register-app-pipeline"
               IMAGE_TAG = 1.0.0
     }
+    parameters {
+    string(name: 'PERSON', defaultValue: 'Mr Jenkins', description: 'Who should I say hello to?')
+  }
     stages {
         stage("Cleanup Workspace") {
             steps {
                 cleanWs()
             }
         }
-        stage("Print Workspace") {
-            steps {
-                sh '' echo params.Updated_Version_Id ''
-            }
-        }
+stage('Example') {
+      steps {
+        sh "echo Hello ${params.PERSON}"
+      }
+    }
+
 
         stage("Checkout from SCM") {
                steps {
