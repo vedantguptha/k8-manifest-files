@@ -2,12 +2,17 @@ pipeline {
     agent any
     environment {
               APP_NAME = "register-app-pipeline"
-              IMAGE_TAG = "2.0.0-9"
+              IMAGE_TAG = params.Updated_Version_Id
     }
     stages {
         stage("Cleanup Workspace") {
             steps {
                 cleanWs()
+            }
+        }
+        stage("Cleanup Workspace") {
+            steps {
+                sh '' echo ${IMAGE_TAG} ''
             }
         }
 
@@ -24,6 +29,12 @@ pipeline {
                    sed -i 's/${APP_NAME}.*/${APP_NAME}:${IMAGE_TAG}/g' deployment.yaml
                    cat deployment.yaml
                 """
+            }
+        }
+
+         stage("New Deploymnet File") {
+            steps {
+                sh " cat deployment.yaml " 
             }
         }
 
