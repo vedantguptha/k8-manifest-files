@@ -13,7 +13,7 @@ pipeline {
 
         stage("Checkout from SCM") {
                steps {
-                   git branch: 'main',  url: 'https://github.com/vedantguptha/k8-manifest-files.git'
+                   git changelog: false, poll: false, url: 'https://github.com/vedantguptha/k8-manifest-files.git'
                }
         }
 
