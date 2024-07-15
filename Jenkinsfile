@@ -2,7 +2,7 @@ pipeline {
     agent any
     environment {
               APP_NAME = "register-app-pipeline"
-              IMAGE_TAG = 1.0.0
+              IMAGE_TAG = "1.0.0"
     }
     parameters {
     string(name: 'PERSON', defaultValue: 'Mr Jenkins', description: 'Who should I say hello to?')
