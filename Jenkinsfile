@@ -5,7 +5,7 @@ pipeline {
               IMAGE_TAG = "1.0.0"
     }
     parameters {
-    string(name: 'UPDATEDVERSION', )
+    string(name: 'release_version', )
   }
     stages {
         stage("Cleanup Workspace") {
@@ -15,8 +15,8 @@ pipeline {
         }
     stage('Example') {
         steps {
-            sh "${params.UPDATEDVERSION}"
-        }
+            sh "${params.release_version}"
+            }
         }
 
 
