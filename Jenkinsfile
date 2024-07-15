@@ -10,7 +10,7 @@ pipeline {
                 cleanWs()
             }
         }
-        stage("Cleanup Workspace") {
+        stage("Print Workspace") {
             steps {
                 sh '' echo params.Updated_Version_Id ''
             }
