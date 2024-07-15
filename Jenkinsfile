@@ -5,7 +5,7 @@ pipeline {
               IMAGE_TAG = "1.0.0"
     }
     parameters {
-    string(name: 'UPDATEDVERSION',  description: 'Who should I say hello to?')
+    string(name: 'UPDATEDVERSION', )
   }
     stages {
         stage("Cleanup Workspace") {
@@ -13,34 +13,34 @@ pipeline {
                 cleanWs()
             }
         }
-stage('Example') {
-      steps {
-        sh "echo Hello ${params.UPDATEDVERSION}"
-      }
-    }
-
-
-        stage("Checkout from SCM") {
-               steps {
-                   git changelog: false, poll: false, url: 'https://github.com/vedantguptha/k8-manifest-files.git'
-               }
+    stage('Example') {
+        steps {
+            sh "echo Hello ${params.UPDATEDVERSION}"
+        }
         }
 
-        stage("Update the Deployment Tags") {
-            steps {
-                sh """
-                   cat deployment.yaml
-                   sed -i 's/${APP_NAME}.*/${APP_NAME}:${params.UPDATEDVERSION}/g' deployment.yaml
-                   cat deployment.yaml
-                """
-            }
-        }
 
-         stage("New Deploymnet File") {
-            steps {
-                sh " cat deployment.yaml " 
-            }
-        }
+        // stage("Checkout from SCM") {
+        //        steps {
+        //            git changelog: false, poll: false, url: 'https://github.com/vedantguptha/k8-manifest-files.git'
+        //        }
+        // }
+
+        // stage("Update the Deployment Tags") {
+        //     steps {
+        //         sh """
+        //            cat deployment.yaml
+        //            sed -i 's/${APP_NAME}.*/${APP_NAME}:${params.UPDATEDVERSION}/g' deployment.yaml
+        //            cat deployment.yaml
+        //         """
+        //     }
+        // }
+
+        //  stage("New Deploymnet File") {
+        //     steps {
+        //         sh " cat deployment.yaml " 
+        //     }
+        // }
 
         // stage("Push the changed deployment file to Git") {
         //     steps {
