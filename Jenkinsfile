@@ -43,7 +43,7 @@ pipeline {
                    git commit -m "Updated Deployment Manifest"
                 """
                 withCredentials([gitUsernamePassword(credentialsId: 'git-hub-id', gitToolName: 'Default')]) {
-               sh "git push https://github.com/vedantguptha/k8-manifest-files.git main"
+               sh "git push https://github.com/vedantguptha/k8-manifest-files.git master"
 }
                
             }
