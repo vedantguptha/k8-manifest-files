@@ -13,28 +13,21 @@ pipeline {
                 cleanWs()
             }
         }
-    stage('Example') {
-        steps {
-            sh "${params.release_version}"
-            }
+        stage("Checkout from SCM") {
+               steps {
+                   git changelog: false, poll: false, url: 'https://github.com/vedantguptha/k8-manifest-files.git'
+               }
         }
 
-
-        // stage("Checkout from SCM") {
-        //        steps {
-        //            git changelog: false, poll: false, url: 'https://github.com/vedantguptha/k8-manifest-files.git'
-        //        }
-        // }
-
-        // stage("Update the Deployment Tags") {
-        //     steps {
-        //         sh """
-        //            cat deployment.yaml
-        //            sed -i 's/${APP_NAME}.*/${APP_NAME}:${params.UPDATEDVERSION}/g' deployment.yaml
-        //            cat deployment.yaml
-        //         """
-        //     }
-        // }
+        stage("Update the Deployment Tags") {
+            steps {
+                sh """
+                   cat deployment.yaml
+                   sed -i 's/${APP_NAME}.*/${APP_NAME}:${params.release_version}/g' deployment.yaml
+                   cat deployment.yaml
+                """
+            }
+        }
 
         //  stage("New Deploymnet File") {
         //     steps {
