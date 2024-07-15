@@ -15,7 +15,7 @@ pipeline {
         }
     stage('Example') {
         steps {
-            sh "echo Hello ${params.UPDATEDVERSION}"
+            sh "${params.UPDATEDVERSION}"
         }
         }
 
