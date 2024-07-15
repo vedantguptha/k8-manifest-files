@@ -5,7 +5,7 @@ pipeline {
               IMAGE_TAG = "1.0.0"
     }
     parameters {
-    string(name: 'PERSON', defaultValue: 'Mr Jenkins', description: 'Who should I say hello to?')
+    string(name: 'UPDATEDVERSION',  description: 'Who should I say hello to?')
   }
     stages {
         stage("Cleanup Workspace") {
@@ -15,7 +15,7 @@ pipeline {
         }
 stage('Example') {
       steps {
-        sh "echo Hello ${params.PERSON}"
+        sh "echo Hello ${params.UPDATEDVERSION}"
       }
     }
 
@@ -30,7 +30,7 @@ stage('Example') {
             steps {
                 sh """
                    cat deployment.yaml
-                   sed -i 's/${APP_NAME}.*/${APP_NAME}:${IMAGE_TAG}/g' deployment.yaml
+                   sed -i 's/${APP_NAME}.*/${APP_NAME}:${params.UPDATEDVERSION}/g' deployment.yaml
                    cat deployment.yaml
                 """
             }
