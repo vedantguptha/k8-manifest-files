@@ -2,7 +2,7 @@ pipeline {
     agent any
     environment {
               APP_NAME = "register-app-pipeline"
-              IMAGE_TAG = params.Updated_Version_Id
+              IMAGE_TAG = 1.0.0
     }
     stages {
         stage("Cleanup Workspace") {
@@ -12,7 +12,7 @@ pipeline {
         }
         stage("Cleanup Workspace") {
             steps {
-                sh '' echo ${IMAGE_TAG} ''
+                sh '' echo params.Updated_Version_Id ''
             }
         }
 
