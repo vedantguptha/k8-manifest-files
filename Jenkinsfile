@@ -4,7 +4,8 @@ pipeline {
               APP_NAME = "loginregisterapp"
     }
     parameters {
-    string(name: 'release_version', )
+    string(name: 'release_version_tag_id', )
+    string(name: 'docker_image_name')
   }
     stages {
         stage("Cleanup Workspace") {
@@ -22,7 +23,7 @@ pipeline {
             steps {
                 sh """
                    cat deployment.yaml
-                   sed -i 's/${APP_NAME}.*/${APP_NAME}:${params.release_version}/g' deployment.yaml
+                   sed -i 's/${params.docker_image_name}.*/${params.docker_image_name}:${params.release_version_tag_id}/g' deployment.yaml
                 """
             }
         }
