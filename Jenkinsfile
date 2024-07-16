@@ -1,8 +1,5 @@
 pipeline {
     agent any
-    environment {
-              APP_NAME = "loginregisterapp"
-    }
     parameters {
     string(name: 'release_version_tag_id', )
     string(name: 'docker_image_name')
