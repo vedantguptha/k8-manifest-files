@@ -1,3 +1,4 @@
+<<<<<<< HEAD
 apiVersion: apps/v1
 kind: Deployment
 metadata:
@@ -23,3 +24,28 @@ spec:
             - containerPort: 8080
 
             
+=======
+:
+:
+:
+:
+:
+:
+:
+:
+:
+:
+:
+:
+:
+:
+:
+:
+:
+:
+:
+:
+:
+:
+:
+>>>>>>> f806f4d7aa2f71cae40113ef0c24b8f8da55e938
