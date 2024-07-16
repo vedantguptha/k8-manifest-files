@@ -2,6 +2,7 @@ pipeline {
     agent any
     environment {
               APP_NAME = "vedantdevops"
+              DOCKER_HUB_NAME="loginregisterapp"
     }
     parameters {
     string(name: 'release_version', )
@@ -22,7 +23,7 @@ pipeline {
             steps {
                 sh """
                    cat deployment.yaml
-                   sed -i 's/${APP_NAME}.*/${APP_NAME}:${params.release_version}/g' deployment.yaml
+                   sed -i 's/${APP_NAME}.*/${APP_NAME}/${DOCKER_HUB_NAME}:${params.release_version}/g' deployment.yaml
                 """
             }
         }
