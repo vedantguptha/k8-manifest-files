@@ -45,8 +45,11 @@ pipeline {
         }
         stage("Push") {
             steps {
-                withCredentials([gitUsernamePassword(credentialsId: 'git-hub-pat-id', gitToolName: 'Default')]) {
-                    sh "git push https://github.com/vedantguptha/k8-manifest-files.git master"
+                // withCredentials([gitUsernamePassword(credentialsId: 'git-hub-pat-id', gitToolName: 'Default')]) {
+                //     sh "git push https://github.com/vedantguptha/k8-manifest-files.git master"
+                // }
+                withCredentials([usernamePassword(credentialsId: 'git-hub-id', passwordVariable: 'password', usernameVariable: 'username')]) {
+                    sh " git push https://$username:$password@vedantguptha/CI-CD-Project7.git --all "
                 }
             }
         }
