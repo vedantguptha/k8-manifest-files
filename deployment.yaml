@@ -19,5 +19,5 @@ spec:
             limits:
               memory: "256Mi"
               cpu: "500m"
-          ports:
+          ports: 8080
             
