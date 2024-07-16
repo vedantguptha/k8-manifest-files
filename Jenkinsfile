@@ -23,7 +23,7 @@ pipeline {
             steps {
                 sh """
                    cat deployment.yaml
-                   sed -i 's/${APP_NAME}.*/${APP_NAME}/${DOCKER_HUB_NAME}:${params.release_version}/g' deployment.yaml
+                   sed -i 's/${APP_NAME}/${DOCKER_HUB_NAME}.*/${APP_NAME}/${DOCKER_HUB_NAME}:${params.release_version}/g' deployment.yaml
                 """
             }
         }
