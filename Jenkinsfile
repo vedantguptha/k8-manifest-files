@@ -1,8 +1,7 @@
 pipeline {
     agent any
     environment {
-              APP_NAME = "register-app-pipeline"
-              IMAGE_TAG = "1.0.0"
+              APP_NAME = "vedantdevops"
     }
     parameters {
     string(name: 'release_version', )
@@ -44,8 +43,7 @@ pipeline {
                 """
                 withCredentials([gitUsernamePassword(credentialsId: 'git-hub-id', gitToolName: 'Default')]) {
                sh "git push https://github.com/vedantguptha/k8-manifest-files.git master"
-}
-               
+                }
             }
         }
       

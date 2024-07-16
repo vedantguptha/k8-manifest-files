@@ -17,7 +17,7 @@ spec:
           image: vedantdevops/loginregisterapp:6
           resources:
             limits:
-              memory: "256Mi" 
+              memory: "256Mi"
               cpu: "500m"
           ports:
             - containerPort: 8080
