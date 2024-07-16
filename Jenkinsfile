@@ -41,12 +41,12 @@ pipeline {
                 """
             }
         }
-        // stage("Push") {
-        //     steps {
-        //         withCredentials([gitUsernamePassword(credentialsId: 'git-hub-id', gitToolName: 'git-tool')]) {
-        //             sh "git push https://github.com/vedantguptha/k8-manifest-files.git master"
-        //         }
-        //     }
-        // }
+        stage("Push") {
+            steps {
+                withCredentials([gitUsernamePassword(credentialsId: 'git-hub-id', gitToolName: 'git-tool')]) {
+                    sh "git push https://github.com/vedantguptha/k8-manifest-files.git master"
+                }
+            }
+        }
     }
 }
