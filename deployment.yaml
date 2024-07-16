@@ -14,14 +14,10 @@ spec:
     spec:
       containers:
         - name: register-app
-<<<<<<< HEAD
           image: vedantdevops/loginregisterapp:6
-=======
-          image: ashfaque9x/register-app-pipeline:67
->>>>>>> ae47af2e9d5a969c8f47039e74f79d0c505cbb07
           resources:
             limits:
-              memory: "256Mi"
+              memory: "256Mi" 
               cpu: "500m"
           ports:
             - containerPort: 8080
