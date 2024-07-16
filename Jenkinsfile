@@ -33,7 +33,7 @@ pipeline {
             }
         }
 
-        stage("Push the changed deployment file to Git") {
+        stage("Commit Changes") {
             steps {
                 sh """
                    git config --global user.name "vedantguptha"
@@ -41,12 +41,15 @@ pipeline {
                    git add deployment.yaml
                    git commit -m "Updated Deployment Manifest"
                 """
-                withCredentials([gitUsernamePassword(credentialsId: 'git-hub-pat-id', gitToolName: 'Default')]) {
-   sh "git push https://github.com/vedantguptha/k8-manifest-files.git master"
-}
-               
             }
         }
+        // stage("Push") {
+        //     steps {
+        //         withCredentials([gitUsernamePassword(credentialsId: 'git-hub-pat-id', gitToolName: 'Default')]) {
+        //             sh "git push https://github.com/vedantguptha/k8-manifest-files.git master"
+        //         }
+        //     }
+        // }
       
     }
 }
