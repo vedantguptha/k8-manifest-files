@@ -33,19 +33,19 @@ pipeline {
             }
         }
 
-        stage("Push the changed deployment file to Git") {
-            steps {
-                sh """
-                   git config --global user.name "vedantguptha"
-                   git config --global user.email "vedantguptha.devops@gmail.com"
-                   git add deployment.yaml
-                   git commit -m "Updated Deployment Manifest"
-                """
-                withCredentials([gitUsernamePassword(credentialsId: 'git-hub-pat-id', gitToolName: 'Default')]) {
-               sh "git push https://github.com/vedantguptha/k8-manifest-files.git master"
-                }
-            }
-        }
+        // stage("Push the changed deployment file to Git") {
+        //     steps {
+        //         sh """
+        //            git config --global user.name "vedantguptha"
+        //            git config --global user.email "vedantguptha.devops@gmail.com"
+        //            git add deployment.yaml
+        //            git commit -m "Updated Deployment Manifest"
+        //         """
+        //         withCredentials([gitUsernamePassword(credentialsId: 'git-hub-pat-id', gitToolName: 'Default')]) {
+        //        sh "git push https://github.com/vedantguptha/k8-manifest-files.git master"
+        //         }
+        //     }
+        // }
       
     }
 }
