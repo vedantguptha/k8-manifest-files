@@ -1,8 +1,8 @@
 pipeline {
     agent any
     parameters {
-    string(name: 'release_version_tag_id', )
     string(name: 'docker_image_name')
+    string(name: 'release_version_tag_id' )
   }
     stages {
         stage("Cleanup Workspace") {
