@@ -1,7 +1,7 @@
 pipeline {
     agent any
     environment {
-              APP_NAME = "vedantdevops/loginregisterapp"
+              APP_NAME = "vedantdevops"
     }
     parameters {
     string(name: 'release_version', )
