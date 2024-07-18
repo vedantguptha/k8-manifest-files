@@ -1,0 +1,49 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  labels:
+    app: email-app
+  name: email-app
+spec:
+  replicas: 2
+  selector:
+    matchLabels:
+      app: email-app
+  template:
+    metadata:
+      labels:
+        app: email-app
+    spec:
+      containers:
+      - image: ailhan/web-debug
+        name: email-app
+        env:
+        - name: TEXT
+          value: "Hello from the Email App"
+        - name: HOSTNAME
+          value: "true"
+---
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  labels:
+    app: payment-app
+  name: payment-app
+spec:
+  replicas: 2
+  selector:
+    matchLabels:
+      app: payment-app
+  template:
+    metadata:
+      labels:
+        app: payment-app
+    spec:
+      containers:
+      - image: ailhan/web-debug
+        name: payment-app
+        env:
+        - name: TEXT
+          value: "Hello from the Payment App"
+        - name: HOSTNAME
+          value: "true"
